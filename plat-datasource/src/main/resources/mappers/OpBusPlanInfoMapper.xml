@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sinosoft.mapper.OpBusPlanInfoMapper">
+
+    <!--根据计划名称查询信息-->
+    <select id="getPlanInfos" resultType="com.sinosoft.domain.OpBusPlanInfo" statementType="PREPARED" parameterType="java.lang.String">
+        select
+            opp.plan_id planId,
+            opp.plan_name planName,
+            opp.short_plan_name shortPlanName,
+            opp.plan_reg_no planRegNo
+        from op_bus_plan_info opp
+        where opp.plan_name like  concat(concat('%',#{planName}),'%')
+    </select>
+
+
+</mapper>
